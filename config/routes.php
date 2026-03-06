@@ -93,4 +93,9 @@ return function (RouteBuilder $routes): void {
      * });
      * ```
      */
+
+    $routes->prefix('Api', ['path' => '/api'], function (RouteBuilder $builder) {
+        $builder->setExtensions(['json']); // Enable .json extension for API for Product CRUD
+        $builder->resources('Products'); // All CRUD actions implicitly included for Products
+    });
 };
