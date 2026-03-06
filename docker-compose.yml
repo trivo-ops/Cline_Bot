@@ -40,5 +40,14 @@ services:
       - ./antigravity-manager/antigravity_data:/root/.antigravity_tools
     restart: unless-stopped
 
+  test:
+    image: php:8.3-cli
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    command: ["/usr/local/bin/composer", "install", "&&", "vendor/bin/phpunit"]
+    depends_on:
+      - db
+
 volumes:
   db_data:

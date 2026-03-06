@@ -73,13 +73,13 @@ class ProductsTable extends Table
         $validator
             ->integer('stock')
             ->nonNegativeInteger('stock', 'Stock must be a non-negative integer')
-            ->allowEmptyString('stock');
+            ->requirePresence('stock', 'create')
+            ->notEmptyString('stock', 'Stock is required');
 
         $validator
             ->scalar('status')
-            ->allowEmptyString('status')
+            ->notEmptyString('status', 'Status is required')
             ->inList('status', ['active', 'inactive'], 'Invalid status provided');
-
 
         return $validator;
     }

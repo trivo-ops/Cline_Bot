@@ -85,11 +85,11 @@ class ProductsController extends AppController
             'pagination' => [
                 'page' => $paginate['page'],
                 'limit' => $paginate['perPage'], // perPage is the actual limit used
-                'total' => $paginate['count'],
-                'pages' => $paginate['pageCount'],
-            ],
-            '_serialize' => ['success', 'data', 'message', 'pagination'],
-            'errors' => new \stdClass(), // Ensure errors key is always present
+             'total' => $paginate['count'],
+             'pages' => $paginate['pageCount'],
+         ],
+         '_serialize' => ['success', 'data', 'message', 'errors', 'pagination'],
+         'errors' => new \stdClass(), // Ensure errors key is always present
         ]);
     }
 
@@ -107,11 +107,11 @@ class ProductsController extends AppController
         try {
             $product = $this->Products->get($id, ['contain' => []]);
             $this->set([
-                'success' => true,
-                'data' => $product,
-                'message' => 'Product retrieved successfully',
-                '_serialize' => ['success', 'data', 'message'],
-                'errors' => new \stdClass(),
+                 'success' => true,
+                 'data' => $product,
+                 'message' => 'Product retrieved successfully',
+                 '_serialize' => ['success', 'data', 'message', 'errors'],
+                 'errors' => new \stdClass(),
             ]);
         } catch (RecordNotFoundException $e) {
             $this->response = $this->response->withStatus(404);
@@ -140,11 +140,11 @@ class ProductsController extends AppController
             if ($this->Products->save($product)) {
                 $this->response = $this->response->withStatus(201); // 201 Created
                 $this->set([
-                    'success' => true,
-                    'data' => $product,
-                    'message' => 'Product created successfully',
-                    '_serialize' => ['success', 'data', 'message'],
-                    'errors' => new \stdClass(),
+                 'success' => true,
+                 'data' => $product,
+                 'message' => 'Product created successfully',
+                 '_serialize' => ['success', 'data', 'message', 'errors'],
+                 'errors' => new \stdClass(),
                 ]);
             } else {
                 $this->response = $this->response->withStatus(422); // 422 Unprocessable Entity
@@ -186,20 +186,20 @@ class ProductsController extends AppController
      */
     public function edit($id = null)
     {
-        $this->request->allowMethod(['put', 'post']); // PUT for RESTful, POST for browser compatibility (if needed)
+        $this->request->allowMethod(['put']);
 
         try {
             $product = $this->Products->get($id);
             $product = $this->Products->patchEntity($product, $this->request->getData());
 
-            if ($this->Products->save($product)) {
-                $this->set([
-                    'success' => true,
-                    'data' => $product,
-                    'message' => 'Product updated successfully',
-                    '_serialize' => ['success', 'data', 'message'],
-                    'errors' => new \stdClass(),
-                ]);
+             if ($this->Products->save($product)) {
+                 $this->set([
+                     'success' => true,
+                     'data' => $product,
+                     'message' => 'Product updated successfully',
+                     '_serialize' => ['success', 'data', 'message', 'errors'],
+                     'errors' => new \stdClass(),
+                 ]);
             } else {
                 $this->response = $this->response->withStatus(422); // 422 Unprocessable Entity
                 $this->set([
@@ -254,14 +254,14 @@ class ProductsController extends AppController
         try {
             $product = $this->Products->get($id);
             if ($this->Products->delete($product)) {
-                $this->response = $this->response->withStatus(204); // 204 No Content
-                $this->set([
-                    'success' => true,
-                    'data' => new \stdClass(),
-                    'message' => 'Product deleted successfully',
-                    '_serialize' => ['success', 'data', 'message'],
-                    'errors' => new \stdClass(),
-                ]);
+                 $this->response = $this->response->withStatus(204); // 204 No Content
+                 $this->set([
+                     'success' => true,
+                     'data' => new \stdClass(),
+                     'message' => 'Product deleted successfully',
+                     '_serialize' => ['success', 'data', 'message', 'errors'],
+                     'errors' => new \stdClass(),
+                 ]);
             } else {
                 $this->response = $this->response->withStatus(500); // 500 Internal Server Error in case of DB error
                 $this->set([
