@@ -23,7 +23,7 @@ prompt-to-plan  →  plan-to-implement  →  commit-and-pr
 | Gate | Condition to pass |
 |------|-------------------|
 | Start Phase 2 | `task_prompt.md` contains `## STATUS: APPROVED` |
-| Start Phase 3 | `implement_plan.md` contains `## STATUS: APPROVED` AND all tests pass |
+| Start Phase 3 | `implement_plan.md` contains `## STATUS: APPROVED` AND all tests pass (unless explicitly skipped via "Testing: Skipped" in `pr_description.md`) |
 
 If a gate condition is not met, **STOP** and instruct the user to approve the relevant file.
 

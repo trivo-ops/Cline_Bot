@@ -21,7 +21,10 @@ Stage all task-related changes, create a well-formed commit, and open a pull req
 3. If it still says `## STATUS: DRAFT` → **STOP immediately.**
    Tell the user:
    > "`implement_plan.md` is still DRAFT. Please change its STATUS to APPROVED and confirm all tests pass before I can proceed."
-4. Confirm the most recent test run passed (ask user if unsure).
+4. Read `docs/tasks/<TASK>/pr_description.md`.
+5. Check if `pr_description.md` contains the line "Testing: Skipped".
+6. If "Testing: Skipped" is *not* present, confirm the most recent test run passed (ask user if unsure).
+7. If "Testing: Skipped" *is* present, acknowledge that tests will be skipped for this PR.
 
 ---
 

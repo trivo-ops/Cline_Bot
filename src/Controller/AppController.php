@@ -17,6 +17,20 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Event\EventInterface;
+use Cake\Http\Response;
+
+// Authentication Plugin
+use Authentication\AuthenticationServiceInterface;
+use Authentication\AuthenticationServiceException;
+use Authentication\Authenticator\ResultInterface;
+use Authentication\Controller\Component\AuthenticationComponent;
+use Authorization\AuthorizationServiceInterface;
+use Authorization\Exception\ForbiddenException;
+use Authorization\Controller\Component\AuthorizationComponent;
+
+// RequestHandler Component
+use Cake\Controller\Component\RequestHandlerComponent;
 
 /**
  * Application Controller
