@@ -53,9 +53,7 @@ yarn-debug.log
 yarn-error.log
 
 # antigravity-manager local data (contains tokens)
-tools/antigravity-manager/antigravity_data/
-
-.github/workflows/ci.yml
+antigravity-manager/antigravity_data/
 
 .github/workflows/ci.yml
 
