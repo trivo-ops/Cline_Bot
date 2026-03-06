@@ -1,4 +1,4 @@
-## STATUS: APPROVED
+## STATUS: DRAFT
 
 ## Summary
 This plan outlines the steps to implement a JSON REST API for handling CRUD operations on products within a CakePHP 5 application. The API will support listing, viewing, creating, updating, and deleting product records, with appropriate validation, error handling, and authentication placeholders. The implementation will adhere to CakePHP 5 conventions and the specified API contract, including JSON response formats and pagination for the product list.

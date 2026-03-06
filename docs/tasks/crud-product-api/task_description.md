@@ -1,4 +1,6 @@
-Implement CRUD API for Product
+Task : Implement CRUD API for Product
+
+Description:
 
 Implement CRUD API for Product for an admin dashboard.
 CRUD endpoints (list/detail/create/update/delete) returning JSON.
